@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostListener, Input, Output, forwardRef } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IDropdownSettings, ListItem } from './multi-select.model';
-import { ListFilterPipe } from '../../core/pipe/list-filter.pipe';
+
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../../core/core.module';
+import { MultiSelectFilterPipe } from '../../core/pipe/multi-select-filter.pipe';
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -18,7 +19,7 @@ const noop = () => {};
   imports: [CommonModule,FormsModule, CoreModule],
   templateUrl: './multi-select-dropdown.component.html',
   styleUrl: './multi-select-dropdown.component.scss',
-  providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR, ListFilterPipe],
+  providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR, MultiSelectFilterPipe],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiSelectDropdownComponent {
@@ -27,8 +28,8 @@ export class MultiSelectDropdownComponent {
   public selectedItems: Array<ListItem> = [];
   public isDropdownOpen = true;
   _placeholder = "Select";
-  private _sourceDataType:any = null; // to keep note of the source data type. could be array of string/number/object
-  private _sourceDataFields: Array<String> = []; // store source data fields names
+  private _sourceDataType:any = null; 
+  private _sourceDataFields: Array<String> = []; 
   filter: ListItem = new ListItem(this.data);
   defaultSettings: IDropdownSettings = {
     singleSelection: false,
@@ -117,7 +118,7 @@ export class MultiSelectDropdownComponent {
   }
 
   constructor(
-    private listFilterPipe:ListFilterPipe,
+    private listFilterPipe:MultiSelectFilterPipe,
     private cdr: ChangeDetectorRef
   ) {}
 

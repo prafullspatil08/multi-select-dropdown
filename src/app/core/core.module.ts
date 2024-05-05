@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListFilterPipe } from './pipe/list-filter.pipe';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { MultiSelectFilterPipe } from './pipe/multi-select-filter.pipe';
 
 
 
 @NgModule({
-  declarations: [ListFilterPipe, ClickOutsideDirective],
+  declarations: [MultiSelectFilterPipe, ClickOutsideDirective],
   imports: [
     CommonModule
   ],
-  exports:[ListFilterPipe, ClickOutsideDirective]
+  exports:[MultiSelectFilterPipe, ClickOutsideDirective]
 })
 export class CoreModule { }
