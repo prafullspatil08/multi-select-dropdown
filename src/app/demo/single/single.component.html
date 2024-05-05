@@ -1,0 +1,5 @@
+<form>
+    <app-multi-select-dropdown name="city" [data]="optionList" [(ngModel)]="selectedItem" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+      [disabled]="disabled">
+    </app-multi-select-dropdown>
+  </form>

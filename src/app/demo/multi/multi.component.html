@@ -1,0 +1,5 @@
+<form [formGroup]="myForm">
+    <app-multi-select-dropdown 
+      name="city" [placeholder]="'Select City'" [settings]="dropdownSettings" [data]="optionList" formControlName="city" [disabled]="disabled" (onDropDownClose)="onDropDownClose()" (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)" (onSelectAll)="onSelectAll($event)">
+    </app-multi-select-dropdown>
+  </form>

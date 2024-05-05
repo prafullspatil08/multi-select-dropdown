@@ -1,77 +1,10 @@
-<div style="padding: 20px">
-  <div class="grid grid-cols-12">
-    <div class="col-span-4">
-      <h3>Select Multiple Cities</h3>
-      <div class="mb-3">
-        <form [formGroup]="myForm">
-          <app-multi-select-dropdown
-            name="city"
-            [placeholder]="'Select City'"
-            [settings]="dropdownSettings"
-            [data]="cities"
-            formControlName="city"
-            [disabled]="disabled"
-            (onDropDownClose)="onDropDownClose()"
-            (onSelect)="onItemSelect($event)"
-            (onDeSelect)="onItemDeSelect($event)"
-            (onSelectAll)="onSelectAll($event)"
-          >
-          </app-multi-select-dropdown>
-        </form>
-      </div>
-      <form>
-        <app-multi-select-dropdown
-          name="city"
-          [data]="states"
-          [(ngModel)]="selectedState"
-          [settings]="anotherDropdownSettings"
-          (onSelect)="onItemSelect($event)"
-          [disabled]="disabled"
-        >
-        </app-multi-select-dropdown>
-      </form>
-      <p></p>
+<div class="flex justify-center pt-5">
+  <section class="w-[666px]">
+    <div class="mb-4">
+      <app-single></app-single>
     </div>
-  </div>
+    <div>
+      <app-multi></app-multi>
+    </div>
+  </section>
 </div>
-
-<!-- <div style="margin-bottom: 20px;">
-
-  <div class="row">
-    <div class="col-md-4">
-      <h3>Select a single city</h3>
-      <form>
-        <app-multi-select-dropdown name="city" [data]="cities" [(ngModel)]="selectedItem" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
-          [disabled]="disabled">
-        </app-multi-select-dropdown>
-      </form>
-    </div>
-    <div class="col-md-8">
-      <h3>Option</h3>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" [checked]="closeDropdownSelection" (change)="toggleCloseDropdownSelection()">Close Dropdown on selection
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" [checked]="disabled" [(ngModel)]="disabled"> Disabled
-        </label>
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="button" (click)="handleReset()" value="reset">
-        </label>
-      </div>
-    </div>
-  </div>
-  <p></p>
-  <div class="panel panel-default">
-    <div class="panel-heading">Settings</div>
-    <div class="panel-body">
-      <pre>
-        {{dropdownSettings | json}}
-      </pre>
-    </div>
-  </div>
-</div> -->
