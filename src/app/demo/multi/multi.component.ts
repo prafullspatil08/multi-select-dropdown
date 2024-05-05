@@ -45,7 +45,7 @@ export class MultiComponent {
       ];
       this.selectedItems = [
         { item_id: 4, item_text: 'Pune' },
-        { item_id: 6, item_text: 'Navsari' }
+        { item_id: 1, item_text: 'New Delhi' }
       ];
       this.myForm = this.fb.group({
         city: [this.selectedItems]

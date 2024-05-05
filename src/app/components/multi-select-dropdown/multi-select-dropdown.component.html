@@ -1,17 +1,17 @@
-<div tabindex="0" (blur)="onTouched()" class="multiselect-dropdown" (clickOutside)="closeDropdown()">
+<div tabindex="0" (blur)="onTouched()" class="multi-select-dropdown" (clickOutside)="closeDropdown()">
     <div [class.disabled]="disabled">
       <span tabindex="-1" class="dropdown-btn" (click)="toggleDropdown($event)">
         <span *ngIf="selectedItems.length == 0">{{placeholder}}</span>
         <span *ngFor="let item of selectedItems; trackBy: trackByFn;let k = index" class="selected-item-container" >
           <span class="selected-item"  [hidden]="k  > (this._settings.itemsShowLimit-1)">
             <span >{{item.text}}&nbsp;</span>
-            <a style="padding-left:2px;color:white" (click)="onItemClick($event,item)">x</a>
+            <a (click)="onItemClick($event,item)">x</a>
           </span>
          
         </span>
-        <span [ngClass]="{ 'dropdown-multiselect--active': _settings.defaultOpen }" style="float:right !important;padding-right:4px">
+        <span [ngClass]="{ 'dropdown-multiselect-active': _settings.defaultOpen }" style="float:right !important;padding-right:4px">
           <span style="padding-right: 15px;" *ngIf="itemShowRemaining()>0">+{{itemShowRemaining()}}</span>
-          <span class="dropdown-multiselect__caret"></span>
+          <span class="dropdown-multiselect-caret"></span>
         </span>
       </span>
     </div>
