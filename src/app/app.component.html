@@ -1,12 +1,12 @@
 <div style="padding: 20px">
-  <div class="row">
-    <div class="col-md-4">
+  <div class="grid grid-cols-12">
+    <div class="col-span-4">
       <h3>Select Multiple Cities</h3>
       <div class="mb-3">
         <form [formGroup]="myForm">
           <app-multi-select-dropdown
             name="city"
-            [placeholder]="'Select'"
+            [placeholder]="'Select City'"
             [settings]="dropdownSettings"
             [data]="cities"
             formControlName="city"

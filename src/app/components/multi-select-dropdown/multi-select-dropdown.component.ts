@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostListener, Input, Output, forwardRef } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { IDropdownSettings, ListItem } from './multi-select.model';
+import { DEFAULT_SETTING, IDropdownSettings, ListItem } from './model/multi-select.model';
 
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../../core/core.module';
@@ -27,40 +27,33 @@ export class MultiSelectDropdownComponent {
   public _data: Array<ListItem> = [];
   public selectedItems: Array<ListItem> = [];
   public isDropdownOpen = true;
-  _placeholder = "Select";
+  @Input('placeholder') placeholder: string = "Select";
   private _sourceDataType:any = null; 
   private _sourceDataFields: Array<String> = []; 
   filter: ListItem = new ListItem(this.data);
   defaultSettings: IDropdownSettings = {
     singleSelection: false,
-    idField: "id",
-    textField: "text",
-    disabledField: "isDisabled",
+    idField: 'id',
+    textField: 'text',
+    disabledField: 'isDisabled',
     enableCheckAll: true,
-    selectAllText: "Select All",
-    unSelectAllText: "UnSelect All",
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
     allowSearchFilter: false,
     limitSelection: -1,
     clearSearchFilter: true,
     maxHeight: 197,
     itemsShowLimit: 999999999999,
-    searchPlaceholderText: "Search",
-    noDataAvailablePlaceholderText: "No data available",
-    noFilteredDataAvailablePlaceholderText: "No filtered data available",
+    searchPlaceholderText: 'Search',
+    noDataAvailablePlaceholderText: 'No data available',
+    noFilteredDataAvailablePlaceholderText: 'No filtered data available',
     closeDropDownOnSelection: false,
     showSelectedItemsAtTop: false,
     defaultOpen: false,
-    allowRemoteDataSearch: false
+    allowRemoteDataSearch: false,
   };
+  
 
-  @Input()
-  public set placeholder(value: string) {
-    if (value) {
-      this._placeholder = value;
-    } else {
-      this._placeholder = "Select";
-    }
-  }
   @Input()
   disabled = false;
 
@@ -158,7 +151,6 @@ export class MultiSelectDropdownComponent {
             ];
           }
         } catch (e) {
-          // console.error(e.body.msg);
         }
       } else {
         const _data = value.map((item: any) =>
@@ -184,20 +176,16 @@ export class MultiSelectDropdownComponent {
     this.cdr.markForCheck();
   }
 
-  // From ControlValueAccessor interface
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
   }
 
-  // From ControlValueAccessor interface
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
 
-  // Set touched on blur
   @HostListener("blur")
   public onTouched() {
-    // this.closeDropdown();
     this.onTouchedCallback();
   }
 
@@ -235,10 +223,8 @@ export class MultiSelectDropdownComponent {
       if (this._settings.limitSelection > 0) {
         return false;
       }
-      // this._settings.enableCheckAll = this._settings.limitSelection === -1 ? true : false;
-      return true; // !this._settings.singleSelection && this._settings.enableCheckAll && this._data.length > 0;
+      return true;
     } else {
-      // should be disabled in single selection mode
       return false;
     }
   }
@@ -312,7 +298,6 @@ export class MultiSelectDropdownComponent {
 
   closeDropdown() {
     this._settings.defaultOpen = false;
-    // clear search text
     if (this._settings.clearSearchFilter) {
       this.filter.text = "";
     }
@@ -324,7 +309,6 @@ export class MultiSelectDropdownComponent {
       return false;
     }
     if (!this.isAllItemsSelected()) {
-      // filter out disabled item first before slicing
       this.selectedItems = this.listFilterPipe.transform(this._data,this.filter).filter(item => !item.isDisabled).slice();
       this.onSelectAll.emit(this.emittedValue(this.selectedItems));
     } else {
@@ -339,7 +323,6 @@ export class MultiSelectDropdownComponent {
     if (typeof inputData !== "object") {
       return fields;
     }
-    // tslint:disable-next-line:forin
     for (const prop in inputData) {
       fields.push(prop);
     }

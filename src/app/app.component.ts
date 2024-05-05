@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MultiSelectDropdownComponent } from './components/multi-select-dropdown/multi-select-dropdown.component';
-import { IDropdownSettings } from './components/multi-select-dropdown/multi-select.model';
+import { IDropdownSettings } from './components/multi-select-dropdown/model/multi-select.model';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
