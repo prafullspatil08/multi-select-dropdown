@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostListener, Input, Output, forwardRef } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IDropdownSettings, ListItem } from './multi-select.model';
-import { ListFilterPipe } from '../../core/list-filter.pipe';
+import { ListFilterPipe } from '../../core/pipe/list-filter.pipe';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../../core/core.module';
 

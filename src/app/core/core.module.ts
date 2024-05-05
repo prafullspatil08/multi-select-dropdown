@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListFilterPipe } from './list-filter.pipe';
+import { ListFilterPipe } from './pipe/list-filter.pipe';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 
